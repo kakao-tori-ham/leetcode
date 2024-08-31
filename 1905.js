@@ -3,7 +3,12 @@
  * @param {number[][]} grid2
  * @return {number}
  */
-const dir = [[0, 1], [1, 0], [0, -1], [-1, 0]]
+const dir = [
+    [0, 1],
+    [1, 0],
+    [0, -1],
+    [-1, 0],
+]
 var countSubIslands = function (grid1, grid2) {
     const m = grid1.length
     const n = grid1[0].length
@@ -16,11 +21,8 @@ var countSubIslands = function (grid1, grid2) {
             if (grid2[i][j] == 1 && !check[i][j]) {
                 check[i][j] = true
                 const isSubIsland = bfs(i, j)
-                if (isSubIsland)
-                    answer++
-
+                if (isSubIsland) answer++
             }
-
         }
     }
 
@@ -45,10 +47,14 @@ var countSubIslands = function (grid1, grid2) {
     }
 
     function isNextPosValid(nextRow, nextCol) {
-        return nextRow >= 0 && nextRow < m
-            && nextCol >= 0 && nextCol < n
-            && grid2[nextRow][nextCol] && !check[nextRow][nextCol]
+        return (
+            nextRow >= 0 &&
+            nextRow < m &&
+            nextCol >= 0 &&
+            nextCol < n &&
+            grid2[nextRow][nextCol] &&
+            !check[nextRow][nextCol]
+        )
     }
     return answer
-
-};
+}
